@@ -7,6 +7,7 @@ describe 'sidekiq-manager::default' do
 
   # Write full examples using the `expect` syntax
   it 'does includes recipes' do
-    expect(subject).to include_recipe('apt')
+    expect(subject).to include_recipe('redisio')
+    expect(subject).to include_recipe('redisio::enable')
   end
 end
