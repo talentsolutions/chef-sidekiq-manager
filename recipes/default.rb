@@ -9,11 +9,12 @@
 include_recipe 'redisio'
 include_recipe 'redisio::enable'
 
+environment = node['sidekiq'] && node['sidekiq']['environment'] ? node['sidekiq']['environment'] : 'production'
 template '/etc/init/sidekiq.conf' do
   mode 0644
   source 'config.erb'
   variables application_root: node['rails']['applications_root'],
-            environment: (node['sidekiq']['environment'] || 'production'),
+            environment: environment,
             deploy_user: 'deploy'
 end
 
