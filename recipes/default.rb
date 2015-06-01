@@ -13,6 +13,7 @@ template '/etc/init/sidekiq.conf' do
   mode 0644
   source 'config.erb'
   variables application_root: node['rails']['applications_root'],
+            environment: (node['sidekiq']['environment'] || 'production'),
             deploy_user: 'deploy'
 end
 

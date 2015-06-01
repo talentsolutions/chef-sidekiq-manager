@@ -55,7 +55,7 @@ exec /bin/bash <<EOT
   logger -t sidekiq "Starting process: $app-$index"
 
   cd $app
-  exec bundle exec sidekiq -i ${index} -e production -P tmp/pids/sidekiq-${index}.pid
+  exec bundle exec sidekiq -i ${index} -e <%= @environment %> -P tmp/pids/sidekiq-${index}.pid
 EOT
 end script
 
